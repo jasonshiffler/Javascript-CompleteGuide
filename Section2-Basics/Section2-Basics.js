@@ -33,7 +33,7 @@ console.log(globalScope); //This is a global variable
 var reDeclared = "This is legal with var, a good reason to use let";
 var reDeclared = "This is legal with var, a good reason to use let";
 
-//Javascript primative types
+//Javascript primative types, and are copied by value
 let num = 10;  //number
 console.log(typeof(num));
 
