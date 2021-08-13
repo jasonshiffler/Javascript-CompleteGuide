@@ -16,9 +16,7 @@ console.log(typeof(person.greet));
 const start = function () {
     console.log("Game is starting");
 };
-
 start();
-
 
 startTheGame(); //This works for a function delcaration but not a function expression.
 
@@ -78,3 +76,4 @@ const bindExample = (fun) => {
 }
 
 bindExample(passedFunct.bind(this, "Happy Birthday!")); //Bind allows prepopulated data to be passed into a function reference.
+
