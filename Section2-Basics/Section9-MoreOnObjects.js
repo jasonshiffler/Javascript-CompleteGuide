@@ -8,9 +8,9 @@ const person = {
     name: "bob",
     age: 34,
     hobbies: ['fishing', 'racing'],
-    greet: function() {
-        console.log('hello!');
-    }
+    greet() {
+        console.log(`Hello, my name is ${this.name}`); //this refers to whatever calls the function (in this case person), which in this case is the object
+    }                                                  //without this, name will be incorrect
 };
 
 //Determine if a property is part of an object
@@ -56,3 +56,58 @@ const person4 = Object.assign({}, person);
 
 //Object destructuring. OtherProps is an object with the other properties
 const { personAge, ...otherProps } = person;
+
+const name = 'bill'; //Remove this from the the greet function to see what happens.
+person2.greet();
+
+
+//Here bind is used to change what "this" refers to. By default
+//this refers to what ever called the function
+const thing = function(text ="All about this") {
+    console.log(text);
+    console.log(this);
+}
+
+//By default this refers to the global object
+thing();
+
+
+let thisSample = thing.bind(person2, "Using bind to prepopulate what gets passed in.");
+thisSample();
+
+//Allows you to execute a function when you want to override what this is.
+let thisSample1 = thing;
+thisSample1.call(person4, "using Call");
+
+//apply is like call though the arguments are passed in as an array instead.
+let thisSample2 = thing;
+thisSample2.apply(person4, ["using apply"]);
+
+
+//Arrow Functions don't understand the this keyword. this inside the function 
+//refers to the same this outside of the arrow function.
+const arrowFunction  = () => {
+    console.log("Arrow function");
+    console.log(this);
+}
+
+arrowFunction();
+
+const teamArrowExample = {
+    team: "Tigers",
+    members: ['Jack', 'Jill'],
+    logMembers() {
+        this.members.forEach(name => console.log(this.team + "-" + name));
+     }
+}
+teamArrowExample.logMembers();
+
+const teamFunctionExample = {
+    team: "Bears",
+    members: ['Jack', 'Jill'],
+    logMembers() {
+        this.members.forEach(function(name){console.log(this.team + "-" + name)});
+     }
+}
+
+teamFunctionExample.logMembers();
