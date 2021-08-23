@@ -93,15 +93,24 @@ const arrowFunction  = () => {
 
 arrowFunction();
 
+//The Arrow function
 const teamArrowExample = {
     team: "Tigers",
     members: ['Jack', 'Jill'],
     logMembers() {
-        this.members.forEach(name => console.log(this.team + "-" + name));
+        this.members.forEach(name => {console.log(this.team + "-" + name);console.log(this)}); //using an Arrow function within a foreach in a method is good.
+     },                                                                                        //arrow function being called here so it refers to the enclosing object 
+     testArrow: () => {
+         console.log("Testing an arrow function as a method " + this.team); //using arrow functions as a method not a good idea
+         console.log(this);
      }
 }
 teamArrowExample.logMembers();
 
+//The method is being called here so this will refer outside of here
+teamArrowExample.testArrow(); 
+
+//Anonymous function binds this to what calls it which is 
 const teamFunctionExample = {
     team: "Bears",
     members: ['Jack', 'Jill'],
@@ -111,3 +120,18 @@ const teamFunctionExample = {
 }
 
 teamFunctionExample.logMembers();
+
+//Example using getters and setters with objects
+//JS allows for objects to be accessed with the method name.
+movie = {
+    get title() {
+        return this._title;
+
+    },
+    set title(val) {
+        this._title = val.toUpperCase();
+    }
+}
+
+movie.title = "War and Peace";
+console.log(movie.title) ;
