@@ -34,3 +34,7 @@ console.log(person.efficientGreet);
 console.log(person.greet); //greet is still available to person
 
 
+//Adding functionality to an object by modifying its prototype.
+const course = { rating: 5, title:'Calculus'};
+Object.setPrototypeOf(course, {...Object.getPrototypeOf(course), printRating: function() {console.log(this.rating)} });
+course.printRating();
