@@ -125,3 +125,19 @@ console.log(`${nullVariable} is a special value and is of type ${typeof(null)}`)
 let notANumber= NaN;
 console.log(`${notANumber} is a special value and is of type ${typeof(notANumber)}`);
 
+//Truthy/Falsey values - Javascript will coerce a value to a boolean if a boolean is expected.
+if (!0 && 34588934 && -348945) {
+    console.log('0 is falsey, all other numbers are truthy'); //All other numbers are truthy
+}
+
+if (!"" && "Hello") {
+    console.log('empty string is falsey, other strings are truthy');
+}
+
+if(!null && !undefined && !NaN) {
+    console.log('null, undefined, and NaN are falsey');
+}
+
+if({} && []) {
+    console.log("Any array or object is truthy");
+}
